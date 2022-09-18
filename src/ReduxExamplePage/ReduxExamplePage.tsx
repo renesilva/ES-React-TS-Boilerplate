@@ -1,17 +1,17 @@
-import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/app/hooks';
 import { incremented } from '../redux/features/counter/counter-slice';
 
 export default function ReduxExamplePage() {
-  // states
-  const [count, setCount] = useState(0);
+  // redux
+  const count = useAppSelector((state) => state.counter.value);
+  const dispatch = useAppDispatch();
   // handlers
   const handleClickCount = () => {
-    setCount(count + 1);
+    dispatch(incremented());
   };
   // render
   return (
-    <div>
+    <div className="container">
       <h2>Hello</h2>
       <button onClick={handleClickCount} className="btn btn-primary">
         count is {count}

@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import NavBar from './components/NavBar/NavBar';
 import { NavBarOption } from './components/NavBar/NavBar.interfaces';
+import ReduxExamplePage from './ReduxExamplePage/ReduxExamplePage';
 
 function App() {
   // options
@@ -19,6 +20,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route index element={<HomePage />} />
+          <Route path="/redux-example-page" element={<ReduxExamplePage />} />
         </Routes>
       </div>
     </BrowserRouter>

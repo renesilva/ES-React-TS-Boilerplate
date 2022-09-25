@@ -12,7 +12,7 @@ function App() {
   let navBarMainOptions: NavBarOption[] = [{ option: 'Home', to: '/' }];
   let navBarRightOptions: NavBarOption[] = [
     { option: 'My Profile', to: '/my-profile', displayIfLoggedIn: true },
-    { option: 'Login', to: '/login', displayIfLoggedIn: false },
+    { option: 'Login', to: '/loginRequest', displayIfLoggedIn: false },
     { option: 'Logout', to: '/logout', displayIfLoggedIn: true },
   ];
   return (

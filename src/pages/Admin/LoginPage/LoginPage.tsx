@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { login } from '../../../redux/features/auth/auth-slice';
+import { loginRequest } from '../../../redux/features/auth/auth-slice';
 import { LoginPayload } from '../../../services/Auth/Login.interfaces';
 
 const schema = yup
@@ -40,7 +40,7 @@ export default function LoginPage() {
       email: data.email,
       password: data.password,
     };
-    dispatch(login(user));
+    dispatch(loginRequest(user));
   };
   // render
   return (

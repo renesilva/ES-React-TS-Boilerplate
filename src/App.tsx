@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage/HomePage';
 import NavBar from './components/NavBar/NavBar';
 import { NavBarOption } from './components/NavBar/NavBar.interfaces';
 import ReduxExamplePage from './ReduxExamplePage/ReduxExamplePage';
+import LoginPage from './pages/Admin/LoginPage/LoginPage';
 
 function App() {
   // options
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route index element={<HomePage />} />
           <Route path="/redux-example-page" element={<ReduxExamplePage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </div>
     </BrowserRouter>

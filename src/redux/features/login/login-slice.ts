@@ -1,19 +1,20 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { UserLoginAttempt } from './login.interfaces';
-import { api } from '../../../config/site.config';
-import { AxiosError, AxiosResponse } from 'axios';
-
-interface UserAuth {
-  id: number;
-  email: string;
-  name: string;
-  lastname: string;
-}
+import { LoginPayload, LoginResponse } from '../../../services/Auth/Login.interfaces';
+import { UserAuth } from '../../../services/Auth/User.interfaces';
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { authLogin } from '../../../services/Auth/Auth.service';
 
 interface LoginState {
   token: string | null;
   user: UserAuth | null;
 }
+
+export const login = createAsyncThunk(
+  'login/fetchLogin',
+  async (userLoginAttempt: LoginPayload) => {
+    const response = await authLogin(userLoginAttempt);
+    return response.data;
+  },
+);
 
 const initialState: LoginState = {
   token: null,
@@ -24,21 +25,18 @@ const loginSlice = createSlice({
   name: 'login',
   initialState: initialState,
   reducers: {
-    login(state, action: PayloadAction<UserLoginAttempt>) {
-      api
-        .post('auth/login', action.payload)
-        .then((response: AxiosResponse) => {
-          state.user = response.data.user;
-          state.token = response.data.token;
-        })
-        .catch((error: AxiosError) => console.log(error));
-    },
     logout(state) {
       state.user = null;
       state.token = null;
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(login.fulfilled, (state, action: PayloadAction<LoginResponse>) => {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+    });
+  },
 });
 
-export const { login } = loginSlice.actions;
+export const { logout } = loginSlice.actions;
 export default loginSlice.reducer;

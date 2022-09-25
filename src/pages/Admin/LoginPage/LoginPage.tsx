@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { login } from '../../../redux/features/login/login-slice';
-import { UserLoginAttempt } from '../../../redux/features/login/login.interfaces';
+import { LoginPayload } from '../../../services/Auth/Login.interfaces';
 
 const schema = yup
   .object({
@@ -36,7 +36,7 @@ export default function LoginPage() {
   }, [isLoggedIn, navigate]);
   // handlers
   const handleLogin = (data: any) => {
-    const user: UserLoginAttempt = {
+    const user: LoginPayload = {
       email: data.email,
       password: data.password,
     };

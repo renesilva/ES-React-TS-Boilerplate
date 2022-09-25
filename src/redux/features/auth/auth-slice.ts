@@ -8,21 +8,18 @@ interface LoginState {
   user: UserAuth | null;
 }
 
-export const login = createAsyncThunk(
-  'login/fetchLogin',
-  async (userLoginAttempt: LoginPayload) => {
-    const response = await authLogin(userLoginAttempt);
-    return response.data;
-  },
-);
+export const login = createAsyncThunk('auth/login', async (userLoginAttempt: LoginPayload) => {
+  const response = await authLogin(userLoginAttempt);
+  return response.data;
+});
 
 const initialState: LoginState = {
   token: null,
   user: null,
 };
 
-const loginSlice = createSlice({
-  name: 'login',
+const authSlice = createSlice({
+  name: 'auth',
   initialState: initialState,
   reducers: {
     logout(state) {
@@ -38,5 +35,5 @@ const loginSlice = createSlice({
   },
 });
 
-export const { logout } = loginSlice.actions;
-export default loginSlice.reducer;
+export const { logout } = authSlice.actions;
+export default authSlice.reducer;

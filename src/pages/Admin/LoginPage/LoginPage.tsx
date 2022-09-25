@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { login } from '../../../redux/features/login/login-slice';
+import { login } from '../../../redux/features/auth/auth-slice';
 import { LoginPayload } from '../../../services/Auth/Login.interfaces';
 
 const schema = yup
@@ -26,7 +26,7 @@ export default function LoginPage() {
   // hooks
   let navigate = useNavigate();
   // redux
-  const isLoggedIn = useAppSelector((state) => state.login.token);
+  const isLoggedIn = useAppSelector((state) => state.auth.token);
   const dispatch = useAppDispatch();
   // effects
   useEffect(() => {

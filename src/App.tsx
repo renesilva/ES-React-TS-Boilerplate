@@ -6,6 +6,7 @@ import NavBar from './components/NavBar/NavBar';
 import { NavBarOption } from './components/NavBar/NavBar.interfaces';
 import ReduxExamplePage from './ReduxExamplePage/ReduxExamplePage';
 import LoginPage from './pages/Admin/LoginPage/LoginPage';
+import Boot from './redux/boot';
 
 function App() {
   // options
@@ -28,5 +29,8 @@ function App() {
     </BrowserRouter>
   );
 }
+Boot()
+  .then(() => App())
+  .catch((error) => console.log(error));
 
 export default App;

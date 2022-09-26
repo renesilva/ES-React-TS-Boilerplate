@@ -3,17 +3,17 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import NavBar from './components/NavBar/NavBar';
-import { NavBarOption } from './components/NavBar/NavBar.interfaces';
+import { iNavBarOption } from './components/NavBar/NavBar.interfaces';
 import ReduxExamplePage from './ReduxExamplePage/ReduxExamplePage';
 import LoginPage from './pages/Admin/LoginPage/LoginPage';
 import Boot from './redux/boot';
 
 function App() {
   // options
-  let navBarMainOptions: NavBarOption[] = [{ option: 'Home', to: '/' }];
-  let navBarRightOptions: NavBarOption[] = [
+  let navBarMainOptions: iNavBarOption[] = [{ option: 'Home', to: '/' }];
+  let navBarRightOptions: iNavBarOption[] = [
     { option: 'My Profile', to: '/my-profile', displayIfLoggedIn: true },
-    { option: 'Login', to: '/loginRequest', displayIfLoggedIn: false },
+    { option: 'Login', to: '/login', displayIfLoggedIn: false },
     { option: 'Logout', to: '/logout', displayIfLoggedIn: true },
   ];
   return (

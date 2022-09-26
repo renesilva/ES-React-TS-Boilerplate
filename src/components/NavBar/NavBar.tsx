@@ -1,5 +1,12 @@
 import { NavBarOptionsProps } from './NavBar.interfaces';
+import NavBarOption from './NavBarOption';
 
+/**
+ * Displays a Bootstrap Navbar
+ * @param main
+ * @param right
+ * @constructor
+ */
 export default function NavBar({ main, right }: NavBarOptionsProps) {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
@@ -15,13 +22,23 @@ export default function NavBar({ main, right }: NavBarOptionsProps) {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto d-flex flex-wrap">
-            {main.map((navBarOption, index) => (
-              <li key={index}>Option</li>
+            {main.map((_navBarOption, index) => (
+              <NavBarOption
+                key={index}
+                option={_navBarOption.option}
+                to={_navBarOption.to}
+                displayIfLoggedIn={_navBarOption.displayIfLoggedIn}
+              />
             ))}
           </ul>
           <ul className="navbar-nav">
-            {right.map((navBarOption, index) => (
-              <li key={index}>Option</li>
+            {right.map((_navBarOption, index) => (
+              <NavBarOption
+                key={index}
+                option={_navBarOption.option}
+                to={_navBarOption.to}
+                displayIfLoggedIn={_navBarOption.displayIfLoggedIn}
+              />
             ))}
           </ul>
         </div>

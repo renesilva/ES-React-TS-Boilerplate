@@ -1,10 +1,10 @@
-interface NavBarOption {
+interface iNavBarOption {
   to: string;
   displayIfLoggedIn?: boolean | null;
   option: string;
 }
 interface NavBarOptionsProps {
-  main: NavBarOption[];
-  right: NavBarOption[];
+  main: iNavBarOption[];
+  right: iNavBarOption[];
 }
-export type { NavBarOptionsProps, NavBarOption };
+export type { NavBarOptionsProps, iNavBarOption };

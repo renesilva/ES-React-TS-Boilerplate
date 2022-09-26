@@ -1,40 +1,6 @@
 .App{
   display:block;
 }
-.card-holder{
-  .excerpt {
-    // transition-property: all;
-    // transition-duration: 0.5s;
-    // transition-delay: 0s;
-    &.excerpt-visible {
-      display: block;
-      // opacity: 1;
-      // scale: 1;
-      // max-height: auto;  
-      // transform: translateY(0);
-    }
-    &.excerpt-hidden {
-      display: none;
-      // opacity: 0;
-      // scale: 0;
-      // max-height: 0;
-      // transform: translateY(-100%);
-    }
-  }
-}
-
-.calculadora-divisas-page{  
-  .capitalize {
-    text-transform: capitalize;
-  }
-  .list-group-item-divisa{
-    img {
-      max-width:25px;
-    }
-  }
-  .react-select-country{
-    img {
-      max-width:20px;
-    }
-  }
+.nav-link-clickable{
+  cursor: pointer;
 }

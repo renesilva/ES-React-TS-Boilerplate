@@ -10,14 +10,15 @@ export const storageSave = (param: string, value: any) => {
 /**
  * Gets value from localStorage from a JSON object
  * @param param {string}
+ * @param defaultValue {any}
  * @returns {any | null}
  */
-export const storageGet = (param: string) => {
+export const storageGet = (param: string, defaultValue: any = null) => {
   const item = localStorage.getItem(param);
   if (item) {
     return JSON.parse(item);
   } else {
-    return null;
+    return defaultValue;
   }
 };
 

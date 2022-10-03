@@ -8,9 +8,10 @@ import { logout } from '../../redux/features/auth/auth-slice';
  * @param option
  * @param to
  * @param displayIfLoggedIn
+ * @param jsx
  * @constructor
  */
-export default function NavBarOption({ option, to, displayIfLoggedIn }: iNavBarOption) {
+export default function NavBarOption({ option, to, displayIfLoggedIn, jsx }: iNavBarOption) {
   // redux
   const dispatch = useAppDispatch();
   const isLoggedIn = useAppSelector((state) => state.auth.token);
@@ -19,6 +20,10 @@ export default function NavBarOption({ option, to, displayIfLoggedIn }: iNavBarO
   let isActive = '';
   if (to === location.pathname) {
     isActive = 'active';
+  }
+  //
+  if (typeof jsx !== 'undefined') {
+    return <li className="nav-item">{jsx}</li>;
   }
   //
   if (typeof displayIfLoggedIn === 'boolean') {
@@ -42,11 +47,14 @@ export default function NavBarOption({ option, to, displayIfLoggedIn }: iNavBarO
     );
   }
   //
-  return (
-    <li>
-      <Link to={to} className={'nav-link ' + isActive}>
-        {option}
-      </Link>
-    </li>
-  );
+  if (typeof to === 'string') {
+    return (
+      <li>
+        <Link to={to} className={'nav-link ' + isActive}>
+          {option}
+        </Link>
+      </li>
+    );
+  }
+  return <></>;
 }

@@ -28,6 +28,7 @@ export default function NavBar({ main, right }: NavBarOptionsProps) {
                 option={_navBarOption.option}
                 to={_navBarOption.to}
                 displayIfLoggedIn={_navBarOption.displayIfLoggedIn}
+                jsx={_navBarOption.jsx}
               />
             ))}
           </ul>
@@ -38,6 +39,7 @@ export default function NavBar({ main, right }: NavBarOptionsProps) {
                 option={_navBarOption.option}
                 to={_navBarOption.to}
                 displayIfLoggedIn={_navBarOption.displayIfLoggedIn}
+                jsx={_navBarOption.jsx}
               />
             ))}
           </ul>

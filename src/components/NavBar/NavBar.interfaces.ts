@@ -1,7 +1,10 @@
+import React from 'react';
+
 interface iNavBarOption {
-  to: string;
+  to?: string | null;
+  option?: string | null;
   displayIfLoggedIn?: boolean | null;
-  option: string;
+  jsx?: React.ReactElement | null;
 }
 interface NavBarOptionsProps {
   main: iNavBarOption[];

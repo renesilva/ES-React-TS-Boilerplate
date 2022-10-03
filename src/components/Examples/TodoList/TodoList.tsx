@@ -1,28 +1,24 @@
+import { useAppDispatch, useAppSelector } from '../../../redux/app/hooks';
+import { addTask, removeTask, markTaskDone } from '../../../redux/features/tasks/tasks-slice';
+
 import { useState } from 'react';
 
-interface iTask {
-  task: string;
-  done: boolean;
-}
-
 export default function TodoList() {
+  // redux
+  const tasks = useAppSelector((state) => state.tasks.tasks);
+  const dispatch = useAppDispatch();
   // states
-  const [list, setList] = useState<iTask[]>([]);
   const [inputTask, setInputTask] = useState('');
   // handlers
   const handleClickAddTask = () => {
-    setList([...list, { task: inputTask, done: false }]);
+    dispatch(addTask({ task: inputTask, done: false }));
     setInputTask('');
   };
   const handleChangeDoneTask = (index: number) => {
-    let newList = [...list];
-    newList[index].done = !newList[index].done;
-    setList(newList);
+    dispatch(markTaskDone(index));
   };
   const handleChangeDeleteTask = (index: number) => {
-    let newList = [...list];
-    newList.splice(index, 1);
-    setList(newList);
+    dispatch(removeTask(index));
   };
   // render
   return (
@@ -41,7 +37,7 @@ export default function TodoList() {
         </button>
       </div>
       <ul className="list-group">
-        {list.map((item, index) => {
+        {tasks.map((item, index) => {
           return (
             <li key={index} className="list-group-item d-flex justify-content-between">
               <span>

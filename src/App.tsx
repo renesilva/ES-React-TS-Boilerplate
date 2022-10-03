@@ -8,8 +8,11 @@ import ReduxExamplePage from './ReduxExamplePage/ReduxExamplePage';
 import LoginPage from './pages/Admin/LoginPage/LoginPage';
 import Boot from './redux/boot';
 import TodoList from './components/Examples/TodoList/TodoList';
+import { useAppSelector } from './redux/app/hooks';
 
 function App() {
+  // redux
+  const tasks = useAppSelector((state) => state.tasks.tasks);
   // options
   let navBarMainOptions: iNavBarOption[] = [{ option: 'Home', to: '/' }];
   let navBarRightOptions: iNavBarOption[] = [
@@ -23,7 +26,7 @@ function App() {
         >
           <i className="bi bi-card-checklist"></i>
           <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            1
+            {tasks.length}
           </span>
         </button>
       ),
